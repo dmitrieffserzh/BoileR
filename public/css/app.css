@@ -10703,6 +10703,11 @@ body {
   z-index: 100;
 }
 
+.header__logo {
+  display: inline-block;
+  cursor: pointer;
+}
+
 .main {
   flex-wrap: wrap;
   display: flex;

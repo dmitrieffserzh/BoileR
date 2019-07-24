@@ -21,9 +21,9 @@
         <header class="header">
             <div class="container">
                 @if(Route::currentRouteName() == 'main')
-                    <div class="header__logo">{{ config('app.name', 'Laravel') }}</div>
+                    <div class="header__logo">{{ config('app.name') }}</div>
                 @else
-                    <a class="header__logo" href="{{ url('/') }}" title="@lang('main.title')"> {{ config('app.name', 'Laravel') }}</a>
+                    <a class="header__logo" href="{{ url('/') }}" title="@lang('main.title')"> {{ config('app.name') }}</a>
                 @endif
                 @include('components.menu-main')
                 @include('components.menu-auth')

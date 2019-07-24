@@ -22,6 +22,10 @@ body {
   background: #fff;
   z-index: 100;
   @extend .shadow-sm;
+  &__logo {
+    display: inline-block;
+    cursor: pointer;
+  }
 }
 
 .main {
