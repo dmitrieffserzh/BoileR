@@ -1,4 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.default')
+
+@section('title')Logistam.RU
+@endsection
+
+@section('description')
+Сервисы помощи логистам.
+@endsection
 
 @section('content')
 <div class="container">
