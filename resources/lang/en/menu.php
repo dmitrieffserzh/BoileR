@@ -7,9 +7,15 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    // MAIN MENU
+    'news'             => 'News',
+    'events'           => 'Events',
+    'companies'        => 'Companies',
+    'blogs'            => 'Blogs',
+    'services'         => 'Services',
 
     // AUTH MENU
     'login'            => 'Login',
     'logout'           => 'Logout',
-    'register'         => 'Registration'
+    'register'         => 'Registration',
 ];
