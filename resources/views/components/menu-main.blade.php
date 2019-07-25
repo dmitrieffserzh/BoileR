@@ -27,4 +27,31 @@
         </li>
     </ul>
 </nav>
+<button id="button-menu" class="button-menu">
+    <span class="button-menu__line"></span>
+    <span class="button-menu__line"></span>
+    <span class="button-menu__line"></span>
+</button>
 
+@push('scripts')
+<script>
+    $(document).ready(function(){
+        let open = function() {
+            $('.menu-main').css({'height': $(window).outerHeight() + 100});
+            $('body').addClass('menu-open');
+        };
+
+        let close = function () {
+            $('body').removeClass('menu-open');
+        };
+
+        $('.button-menu').click(function () {
+            if ($('body').hasClass('menu-open')) {
+                close();
+            } else {
+                open();
+            }
+        });
+    });
+</script>
+@endpush

@@ -10686,6 +10686,10 @@ a.text-dark:focus {
   }
 }
 
+* {
+  outline: none !important;
+}
+
 body {
   padding: 4rem 0 0;
 }
@@ -10736,6 +10740,8 @@ body {
 /* COMPONENTS
 /* ================================================================================================================== */
 
+/* MAIN MENU */
+
 .menu-main {
   display: inline-block;
 }
@@ -10756,6 +10762,53 @@ body {
   padding: 0 0.5rem;
   font-size: 1rem;
 }
+
+.button-menu {
+  display: none;
+  position: relative;
+  border: none;
+  padding: 0 0.5rem;
+  background: transparent;
+  z-index: 100;
+}
+
+.button-menu__line {
+  display: block;
+  margin: 0.25rem 0;
+  width: 1.5rem;
+  height: 2px;
+  background: #3f4350;
+  transition: width 0.15s linear;
+}
+
+@media (max-width: 768px) {
+  .menu-main {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    padding: 3rem 1rem;
+    width: 60%;
+    background: #fff;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    transition: left 0.15s linear;
+    z-index: 90;
+  }
+
+  .button-menu {
+    display: inline-block;
+  }
+
+  .menu-open .menu-main {
+    left: 0;
+  }
+
+  .menu-open .button-menu__line:nth-child(2) {
+    width: 0.75rem;
+    background: #df0031;
+  }
+}
+
+/* AUTH MENU */
 
 .menu-auth {
   display: inline-block;
