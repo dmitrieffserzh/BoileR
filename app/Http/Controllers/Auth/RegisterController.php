@@ -70,7 +70,7 @@ class RegisterController extends Controller {
                 ['required'     => trans('validation.username.required'),
                     'min'       => 'Минимальная длина 3 символа!',
                     'max'       => 'Мaксимальная длина 15 символов!',
-                    'unique'    =>  trans('validation.username.unique'),
+                    'unique'    =>  trans("validation.username.unique"),
                     'regex'     => 'Разрешены символы a-z, 0-9 и _!']
             );
             if ($validator->passes())
