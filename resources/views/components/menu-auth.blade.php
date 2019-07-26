@@ -14,6 +14,11 @@
         </li>
         @endif
         @else
+            <li class="menu-auth__item">
+                <a href="{{ route('user.profile', Auth::user()->route ?? Auth::user()->username) }}" class="menu-auth__link">
+                    {{ Auth::user()->username }}
+                </a>
+            </li>
         <li class="menu-auth__item">
             <a href="{{ route('logout') }}" class="menu-auth__link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 @lang('menu.logout')

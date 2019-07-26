@@ -24,7 +24,7 @@ class UserProfileController extends Controller {
         $user = User::where('route', $route)->orWhere('username', $route)->firstOrFail();
         if(!is_null($user->route) && $route != $user->route)
             return redirect(route('user.profile', $user->route),301);
-        return view('main.users.profile', [
+        return view('users.profile', [
             'user' => $user
         ]);
     }
@@ -36,7 +36,7 @@ class UserProfileController extends Controller {
             return abort(404);
         if(!is_null($user->route) && $route != $user->route)
             return redirect(route('user.profile.edit', $user->route),301);
-        return view('main.users.profile_edit', [
+        return view('users.profile_edit', [
             'user' => $user
         ]);
     }
