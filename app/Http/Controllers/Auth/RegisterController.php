@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\UserProfile;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
-{
+class RegisterController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -23,50 +24,74 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
+
+    protected function validator(array $data) {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username'  => ['required', 'string', 'min:3', 'max:15', 'unique:users', 'regex:/^[a-z0-9_]+$/u'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'  => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+
+    protected function create(array $data) {
+        // NEW USER
+        $user = new User();
+        $user->username = $data['username'];
+        $user->email    = $data['email'];
+        $user->password = Hash::make($data['password']);
+        // NEW PROFILE
+        if($user->save()) {
+            $profile = new UserProfile();
+            $profile->user_id = $user->id;
+            if ($profile->save()) {
+                return $user;
+            }
+        }
+
+        $user->delete($user->id);
+
+        return redirect('register')->with([
+            'error_message' => 'Ошибка! Попробуйте снова!'
         ]);
+    }
+
+
+    protected function checkUsername(Request $request) {
+        if(request()->ajax()) {
+            $validator = Validator::make($request->all(),
+                ['username'     => ['required', 'string', 'min:3', 'max:15', 'unique:users', 'regex:/^[a-z0-9_]+$/u']],
+                ['required'     => 'Не может быть пустым!',
+                    'min'       => 'Минимальная длина 3 символа!',
+                    'max'       => 'Мaксимальная длина 15 символов!',
+                    'unique'    => 'Логин занят!',
+                    'regex'     => 'Разрешены символы a-z, 0-9 и _!']
+            );
+            if ($validator->passes())
+                return response()->json(['success'=> true, 'error' => [''] ]);
+            return response()->json(['success'=> false, 'error'=>$validator->errors()->all()]);
+        }
+        return abort(404);
+    }
+
+
+    protected function checkEmail(Request $request) {
+        if(request()->ajax()) {
+            $validator = Validator::make($request->all(),
+                ['email'      => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'],],
+                [ 'unique'    => 'E-mail зарегистрирован в системе!',
+                    'regex'   => 'Разрешены символы a-z0-9_-.@']
+            );
+            if ($validator->passes())
+                return response()->json(['success'=> true, 'error' => [''] ]);
+            return response()->json(['success'=> false, 'error'=>$validator->errors()->all()]);
+        }
+        return abort(404);
     }
 }

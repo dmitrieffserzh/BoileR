@@ -36770,9 +36770,20 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+try {
+  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+  __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // AJAX X-CSRF-TOKEN
+
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+} catch (e) {
+  console.log(e);
+}
 
 /***/ }),
 

@@ -14,3 +14,17 @@
 Auth::routes();
 
 Route::get('/', 'MainController@index')->name('main');
+
+
+// USERS
+Route::get('users', 'UserController@index')->name('users');
+
+
+
+
+
+
+
+// AJAX
+Route::post('/ajax/check-username',                [ 'as' => 'check-username',               'uses' => 'Auth\RegisterController@checkUsername' ]);
+Route::post('/ajax/check-email',                   [ 'as' => 'check-email',               'uses' => 'Auth\RegisterController@checkEmail' ]);

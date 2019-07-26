@@ -34,7 +34,7 @@
         <main class="main">
             <!-- SECTION -->
             <section class="section">
-                SECTION
+                @yield('content')
             </section>
 
             <!-- ASIDE -->
