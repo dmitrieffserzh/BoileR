@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.register')
 
 @section('content')
     <h1 class="content-title">@lang('auth.register')</h1>
@@ -70,7 +70,7 @@
 
         <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
-                <button type="submit" class="button">
+                <button type="submit" class="btn btn-primary ">
                     @lang('auth.register')
                 </button>
             </div>
