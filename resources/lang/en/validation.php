@@ -128,10 +128,15 @@ return [
     |
     */
 
-    'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+    'username' => [
+        ['required'     => 'Не может быть пустым!',
+            'min'       => 'Минимальная длина 3 символа!',
+            'max'       => 'Мaксимальная длина 15 символов!',
+            'unique'    => 'Username taken!',
+            'regex'     => 'Разрешены символы a-z, 0-9 и _!']
+    ],
+    'email' => [
+        'unique' => 'E-mail уже зарегистрирован!'
     ],
 
     /*

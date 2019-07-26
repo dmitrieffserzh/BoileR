@@ -66,11 +66,11 @@ class RegisterController extends Controller {
     protected function checkUserName(Request $request) {
         if(request()->ajax()) {
             $validator = Validator::make($request->all(),
-                ['username'     => ['required', 'string', 'min:3', 'max:15', 'unique:users', 'regex:/^[a-z0-9_]+$/u']],
-                ['required'     => 'Не может быть пустым!',
+                ['username' => ['required', 'string', 'min:3', 'max:15', 'unique:users,username', 'unique:users,route', 'regex:/^[a-z0-9_]+$/u']],
+                ['required'     => trans('validation.username.required'),
                     'min'       => 'Минимальная длина 3 символа!',
                     'max'       => 'Мaксимальная длина 15 символов!',
-                    'unique'    => 'Логин занят!',
+                    'unique'    =>  trans('validation.username.unique'),
                     'regex'     => 'Разрешены символы a-z, 0-9 и _!']
             );
             if ($validator->passes())
