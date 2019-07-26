@@ -90,7 +90,7 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data: input,
                     type: 'POST',
-                    url: '{{ route('check-username') }}',
+                    url: '{{ route('check-name') }}',
                     success: function (result) {
                         let mainStat = (result.success) ? 'is-valid' : 'is-invalid';
                         let oldStat = (result.success) ? 'is-invalid' : 'is-valid';

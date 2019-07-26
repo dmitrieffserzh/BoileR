@@ -25,5 +25,6 @@ Route::get('/{route}/edit/route',             [ 'as' => 'user.profile.edit.url',
 
 
 // AJAX ============================================================================================================= //
-Route::post('/ajax/check-username',                [ 'as' => 'check-username',               'uses' => 'Auth\RegisterController@checkUsername' ]);
-Route::post('/ajax/check-email',                   [ 'as' => 'check-email',               'uses' => 'Auth\RegisterController@checkEmail' ]);
+Route::post('/ajax/check-name',               [ 'as' => 'check-name',                   'uses' => 'Auth\RegisterController@checkUserName'    ]);
+Route::post('/ajax/check-email',              [ 'as' => 'check-email',                  'uses' => 'Auth\RegisterController@checkUserEmail'   ]);
+Route::post('/ajax/check-route',              [ 'as' => 'check-route',                  'uses' => 'UserProfileController@checkUserRoute'     ]);

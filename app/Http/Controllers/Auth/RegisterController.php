@@ -63,7 +63,7 @@ class RegisterController extends Controller {
     }
 
 
-    protected function checkUsername(Request $request) {
+    protected function checkUserName(Request $request) {
         if(request()->ajax()) {
             $validator = Validator::make($request->all(),
                 ['username'     => ['required', 'string', 'min:3', 'max:15', 'unique:users', 'regex:/^[a-z0-9_]+$/u']],
@@ -81,7 +81,7 @@ class RegisterController extends Controller {
     }
 
 
-    protected function checkEmail(Request $request) {
+    protected function checkUserEmail(Request $request) {
         if(request()->ajax()) {
             $validator = Validator::make($request->all(),
                 ['email'      => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'],],
