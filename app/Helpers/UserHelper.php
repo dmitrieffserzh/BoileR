@@ -9,8 +9,8 @@ class UserHelper {
     public static function get_avatar($avatar) {
         if(is_null($avatar))
             //return '/images/default_avatar.png';
-            return '/images/default_avatar.png';
-        return '/images/' . $avatar;
+            return '/uploads/images/default.png';
+        return '/uploads/images/' . $avatar;
     }
 
 
