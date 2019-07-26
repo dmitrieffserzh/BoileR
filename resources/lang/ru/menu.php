@@ -13,6 +13,7 @@ return [
     'companies'        => 'Компании',
     'blogs'            => 'Блоги',
     'services'         => 'Сервисы',
+    'users'            => 'Пользователи',
 
     // AUTH MENU
     'login'            => 'Войти',

@@ -2,18 +2,10 @@
 
 @section('content')
     USERS
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-    @include('components.users.user-card')
-
+    @forelse ($users as $user)
+        @include('components.users.user-card', [ 'user' => $user ])
+    @empty
+        <p>@lang('erors.no-data')</p>
+    @endforelse
 
 @endsection

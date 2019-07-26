@@ -25,6 +25,11 @@
                 @lang('menu.services')
             </a>
         </li>
+        <li class="menu-main__item">
+            <a href="{{ route('users.list') }}" class="menu-main__link">
+                @lang('menu.users')
+            </a>
+        </li>
     </ul>
 </nav>
 <button id="button-menu" class="button-menu">
