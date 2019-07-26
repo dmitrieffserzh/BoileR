@@ -85,7 +85,7 @@ class RegisterController extends Controller {
         if(request()->ajax()) {
             $validator = Validator::make($request->all(),
                 ['email'      => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'],],
-                [ 'unique'    => 'E-mail зарегистрирован в системе!',
+                [ 'unique'    => 'Пользователь с этим E-mail уже зарегистрирован в системе!',
                     'regex'   => 'Разрешены символы a-z0-9_-.@']
             );
             if ($validator->passes())
