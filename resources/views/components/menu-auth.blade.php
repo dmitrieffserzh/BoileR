@@ -2,7 +2,7 @@
     <ul class="menu-auth__list">
         @guest
         <li class="menu-auth__item">
-            <a href="{{ route('login') }}" class="menu-auth__link">
+            <a href="{{ route('login') }}" class="menu-auth__link ajax" data-url="{{ route('login') }}" data-name="Войти">
                 @lang('menu.login')
             </a>
         </li>

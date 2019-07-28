@@ -52,7 +52,9 @@
                 <p>@lang('main.copyright')</p>
             </div>
         </footer>
-
+        <div class="modal fade" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document"></div>
+        </div>
         <!-- SCRIPTS -->
         <script src="{{ asset('js/app.js') }}"></script>
         @stack('scripts')
