@@ -22,6 +22,7 @@ class RegisterController extends Controller {
     |
     */
 
+
     use RegistersUsers;
 
     protected $redirectTo = '/';
@@ -67,11 +68,11 @@ class RegisterController extends Controller {
         if(request()->ajax()) {
             $validator = Validator::make($request->all(),
                 ['username' => ['required', 'string', 'min:3', 'max:15', 'unique:users,username', 'unique:users,route', 'regex:/^[a-z0-9_]+$/u']],
-                ['required'     => trans('validation.username.required'),
-                    'min'       => 'Минимальная длина 3 символа!',
-                    'max'       => 'Мaксимальная длина 15 символов!',
-                    'unique'    =>  trans("validation.username.unique"),
-                    'regex'     => 'Разрешены символы a-z, 0-9 и _!']
+                ['required'     =>  trans('validation.login.required'),
+                    'min'       =>  trans('validation.login.min'),
+                    'max'       =>  trans('validation.login.max'),
+                    'unique'    =>  trans('validation.login.unique'),
+                    'regex'     =>  trans('validation.login.regex')]
             );
             if ($validator->passes())
                 return response()->json(['success'=> true, 'error' => [''] ]);

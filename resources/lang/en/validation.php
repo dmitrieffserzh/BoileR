@@ -128,15 +128,16 @@ return [
     |
     */
 
-    'username' => [
-        ['required'     => 'Не может быть пустым!',
-            'min'       => 'Минимальная длина 3 символа!',
-            'max'       => 'Мaксимальная длина 15 символов!',
+    'login' => [
+        'required'      => 'Cannot be empty!',
+            'min'       => 'Minimum length 3 characters!',
+            'max'       => 'Maximum length 15 characters!',
             'unique'    => 'Username taken!',
-            'regex'     => 'Разрешены символы a-z, 0-9 и _!']
+            'regex'     => 'Allowable characters are a-z, 0-9 and _!'
     ],
-    'email' => [
-        'unique' => 'E-mail уже зарегистрирован!'
+
+    'e-mail' => [
+        'unique' => 'E-mail is already registered!'
     ],
 
     /*
