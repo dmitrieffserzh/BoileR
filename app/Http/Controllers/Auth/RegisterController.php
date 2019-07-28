@@ -34,7 +34,7 @@ class RegisterController extends Controller {
 
     protected function validator(array $data) {
         return Validator::make($data, [
-            'username'  => [
+            'username' => [
                 'required',
                 'string',
                 'min:3',
@@ -42,7 +42,7 @@ class RegisterController extends Controller {
                 'unique:users',
                 'regex:/^[a-z0-9_]+$/u'
             ],
-            'email'     => [
+            'email' => [
                 'required',
                 'string',
                 'email',
@@ -50,7 +50,7 @@ class RegisterController extends Controller {
                 'unique:users',
                 'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'
             ],
-            'password'  => [
+            'password' => [
                 'required',
                 'string',
                 'min:6',
