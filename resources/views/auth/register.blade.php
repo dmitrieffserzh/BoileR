@@ -20,10 +20,7 @@
                        name="username" value="{{ old('username') }}"
                        data-toggle="tooltip" data-placement="right" required autofocus>
                 <span class="valid-feedback" role="alert">@lang('auth.register_username_free')</span>
-                <span class="invalid-feedback" role="alert"></span>
-                @if ($errors->has('username'))
-                    <span class="invalid-feedback" role="alert">{{ $errors->first('username') }}</span>
-                @endif
+                <span class="invalid-feedback" role="alert">{{ $errors->first('username') }}</span>
             </div>
         </div>
 
@@ -36,10 +33,7 @@
                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                        name="email"
                        value="{{ old('email') }}" required>
-                <span class="invalid-feedback" role="alert"></span>
-                @if ($errors->has('email'))
-                    <span class="invalid-feedback" role="alert">{{ $errors->first('email') }}</span>
-                @endif
+                <span class="invalid-feedback" role="alert">{{ $errors->first('email') }}</span>
             </div>
         </div>
 
