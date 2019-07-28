@@ -42,11 +42,13 @@ class RegisterController extends Controller {
 
 
     protected function create(array $data) {
+
         // NEW USER
         $user = new User();
         $user->username = $data['username'];
         $user->email    = $data['email'];
         $user->password = Hash::make($data['password']);
+
         // NEW PROFILE
         if($user->save()) {
             $profile = new UserProfile();
@@ -59,40 +61,70 @@ class RegisterController extends Controller {
         $user->delete($user->id);
 
         return redirect('register')->with([
-            'error_message' => 'Ошибка! Попробуйте снова!'
+            'error_message' => trans('errors.error_create_profile')
         ]);
     }
 
 
     protected function checkUserName(Request $request) {
+
         if(request()->ajax()) {
             $validator = Validator::make($request->all(),
-                ['username' => ['required', 'string', 'min:3', 'max:15', 'unique:users,username', 'unique:users,route', 'regex:/^[a-z0-9_]+$/u']],
-                ['required'     =>  trans('validation.login.required'),
-                    'min'       =>  trans('validation.login.min'),
-                    'max'       =>  trans('validation.login.max'),
-                    'unique'    =>  trans('validation.login.unique'),
-                    'regex'     =>  trans('validation.login.regex')]
+                [
+                    'username' => [
+                        'required',
+                        'string',
+                        'min:3',
+                        'max:15',
+                        'unique:users,username',
+                        'unique:users,route',
+                        'regex:/^[a-z0-9_]+$/u']
+                ],
+                [
+                    'required'  =>  trans('validation.username.required'),
+                    'min'       =>  trans('validation.username.min'),
+                    'max'       =>  trans('validation.username.max'),
+                    'unique'    =>  trans('validation.username.unique'),
+                    'regex'     =>  trans('validation.username.regex')
+                ]
             );
+
             if ($validator->passes())
                 return response()->json(['success'=> true, 'error' => [''] ]);
+
             return response()->json(['success'=> false, 'error'=>$validator->errors()->all()]);
         }
+
         return abort(404);
     }
 
 
     protected function checkUserEmail(Request $request) {
+
         if(request()->ajax()) {
             $validator = Validator::make($request->all(),
-                ['email'      => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'],],
-                [ 'unique'    => 'Пользователь с этим E-mail уже зарегистрирован в системе!',
-                    'regex'   => 'Разрешены символы a-z0-9_-.@']
+                [
+                    'email' => [
+                        'required',
+                        'string',
+                        'email',
+                        'max:255',
+                        'unique:users',
+                        'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'
+                    ],
+                    ],
+                [
+                    'unique' => trans('validation.e-mail.unique'),
+                    'regex'  => trans('validation.e-mail.regex')
+                ]
             );
+
             if ($validator->passes())
                 return response()->json(['success'=> true, 'error' => [''] ]);
+
             return response()->json(['success'=> false, 'error'=>$validator->errors()->all()]);
         }
+
         return abort(404);
     }
 }

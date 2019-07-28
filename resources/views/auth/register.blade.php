@@ -19,7 +19,7 @@
                        class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
                        name="username" value="{{ old('username') }}"
                        data-toggle="tooltip" data-placement="right" required autofocus>
-                <span class="valid-feedback" role="alert">Логин свободен!</span>
+                <span class="valid-feedback" role="alert">@lang('auth.register_username_free')</span>
                 <span class="invalid-feedback" role="alert"></span>
                 @if ($errors->has('username'))
                     <span class="invalid-feedback" role="alert">{{ $errors->first('username') }}</span>
@@ -94,11 +94,11 @@
                     success: function (result) {
                         let mainStat = (result.success) ? 'is-valid' : 'is-invalid';
                         let oldStat = (result.success) ? 'is-invalid' : 'is-valid';
-                        let errorMes = result.error.join(' ') || '';
+                        let errorMes = result.error.join('<br>') || '';
                         if (input.hasClass(oldStat))
                             input.removeClass(oldStat);
                         input.addClass(mainStat);
-                        input.parent().find('.invalid-feedback').text(errorMes);
+                        input.parent().find('.invalid-feedback').html(errorMes);
                     }
                 });
             }, 500);
@@ -116,11 +116,11 @@
                     success: function (result) {
                         let mainStat = (result.success) ? 'is-valid' : 'is-invalid';
                         let oldStat = (result.success) ? 'is-invalid' : 'is-valid';
-                        let errorMes = result.error.join(' ') || '';
+                        let errorMes = result.error.join('<br>') || '';
                         if (input.hasClass(oldStat))
                             input.removeClass(oldStat);
                         input.addClass(mainStat);
-                        input.parent().find('.invalid-feedback').text(errorMes);
+                        input.parent().find('.invalid-feedback').html(errorMes);
                     }
                 });
             }, 500);

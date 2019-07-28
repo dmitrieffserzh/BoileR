@@ -22,8 +22,9 @@ return [
     'forgot_password'   => 'Восстановить пароль',
 
     // REGISTER FORM
-    'register' => 'Регистрация',
-    'register_username' => 'Логин',
+    'register'          => 'Регистрация',
+    'register_username' => 'Имя пользоваталя',
+    'register_username_free' => 'Имя пользователя свободно!',
     'register_email' => 'E-mail',
     'register_password' => 'Пароль',
     'register_password_confirmation' => 'Подтвердите пароль',
