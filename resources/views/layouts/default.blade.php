@@ -21,7 +21,7 @@
         <header class="header">
             <div class="container">
                 @if(Route::currentRouteName() == 'main')
-                    <div class="header__logo">{{ config('app.name') }}</div>
+                    <div class="header__logo" onclick="window.location.reload();">{{ config('app.name') }}</div>
                 @else
                     <a class="header__logo" href="{{ url('/') }}" title="@lang('main.title')"> {{ config('app.name') }}</a>
                 @endif

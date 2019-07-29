@@ -33,30 +33,31 @@ class RegisterController extends Controller {
 
 
     protected function validator(array $data) {
-        return Validator::make($data, [
-            'username' => [
-                'required',
-                'string',
-                'min:3',
-                'max:15',
-                'unique:users',
-                'regex:/^[a-z0-9_]+$/u'
+        return Validator::make($data,
+            [
+                'username' => [
+                    'required',
+                    'string',
+                    'min:3',
+                    'max:15',
+                    'unique:users',
+                    'regex:/^[a-z0-9_]+$/u'
+                ],
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    'unique:users',
+                    'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'
+                ],
+                'password' => [
+                    'required',
+                    'string',
+                    'min:6',
+                    'confirmed'
+                ]
             ],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users',
-                'regex:/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/u'
-            ],
-            'password' => [
-                'required',
-                'string',
-                'min:6',
-                'confirmed'
-            ]
-        ],
             [
                 'username.required'  =>  trans('validation.username.required'),
                 'username.min'       =>  trans('validation.username.min'),
@@ -65,8 +66,8 @@ class RegisterController extends Controller {
                 'username.regex'     =>  trans('validation.username.regex'),
                 'email.unique'       =>  trans('validation.e-mail.unique'),
                 'email.regex'        =>  trans('validation.e-mail.regex')
-
-            ]);
+            ]
+        );
     }
 
 
