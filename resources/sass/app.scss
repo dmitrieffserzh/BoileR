@@ -15,6 +15,7 @@
 
 
 body {
+  //background: #F8F9FB;
   background: #fff;
   padding: 4rem 0 0;
   font-family: 'Montserrat', sans-serif;
@@ -32,10 +33,11 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  padding: .5rem 0;
+  padding: .85rem 0;
   background: #fff;
   z-index: 100;
-  @extend .shadow-sm;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+  //@extend .shadow-sm;
   &__logo {
     display: inline-block;
     cursor: pointer;
@@ -96,6 +98,12 @@ body {
     display: block;
     padding: 0 .5rem;
     font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    &:hover {
+      color: #9d2aff;
+      text-decoration: none;
+    }
   }
 }
 .button-menu {
@@ -161,6 +169,12 @@ body {
     display: block;
     padding: 0 .5rem;
     font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    &:hover {
+      color: #9d2aff;
+      text-decoration: none;
+    }
   }
 }
 

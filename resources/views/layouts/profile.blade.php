@@ -32,7 +32,7 @@
     <!-- MAIN -->
     <main class="main">
         <!-- SECTION -->
-        <aside class="aside" style="background: #fafbfd; padding: 1rem;">
+        <aside class="aside" style="background: #fff; padding: 1rem;box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);border-radius: .5rem;">
             @yield('profile')
         </aside>
         <!-- SECTION -->
