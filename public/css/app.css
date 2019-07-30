@@ -10853,6 +10853,28 @@ body {
   text-decoration: none;
 }
 
+/* USER AUTH MENU*/
+
+.user-menu-header {
+  display: flex;
+  float: right;
+}
+
+.user-menu-header__name {
+  font-weight: 600;
+}
+
+.user-menu-header__photo {
+  position: relative;
+  margin: 0 0 0 0.5rem;
+}
+
+.user-menu-header__photo img {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+}
+
 /* USER CARD */
 
 .user-card {
@@ -10871,9 +10893,9 @@ body {
 }
 
 .user-card__photo img {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 1.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
 }
 
 .user-card__information {

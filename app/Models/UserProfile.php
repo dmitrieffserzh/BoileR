@@ -14,6 +14,7 @@ class UserProfile extends Model {
         'birthday',
         'gender',
         'about',
+        'avatar',
         'offline_at'
     ];
 

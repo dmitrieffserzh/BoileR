@@ -1,7 +1,7 @@
 <div class="user-card">
     <div class="user-card__photo">
         <a href="{{ route('user.profile', $user->route ?? $user->username) }}" title="{{ $user->username }}">
-            <img src="uploads/images/default.png" alt="{{ $user->username }}">
+            <img src="{{ UserHelper::get_avatar($user->profile->avatar) }}" alt="{{ $user->username }}">
             @if( $user->is_online() )
                 <span class="user-card__dot-status user-card__dot-status--online"></span>
             @else

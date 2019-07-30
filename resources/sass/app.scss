@@ -178,6 +178,23 @@ body {
   }
 }
 
+/* USER AUTH MENU*/
+.user-menu-header {
+  display: flex;
+  float: right;
+  &__name {
+    font-weight: 600;
+  }
+  &__photo {
+    position: relative;
+    margin: 0 0 0 .5rem;
+    & img {
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 50%;
+    }
+  }
+}
 
 
 /* USER CARD */
@@ -192,9 +209,9 @@ body {
     position: relative;
     margin: 0 .5rem 0 0;
     & img {
-      height: 3rem;
-      width: 3rem;
-      border-radius: 1.5rem;
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 50%;
     }
   }
   &__information {
