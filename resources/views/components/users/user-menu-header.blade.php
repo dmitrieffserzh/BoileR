@@ -1,5 +1,7 @@
 @guest
-
+    <a href="{{ route('login') }}" class="menu-auth__link ajax" data-url="{{ route('login') }}" data-name="Войти" data-modal-size="modal-sm">
+        @lang('menu.login')
+    </a>
 @else
 <div class="user-menu-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <a class="user-menu-header__name" href="{{ route('user.profile', Auth::user()->route ?? Auth::user()->username) }}" title="{{ Auth::user()->username }}">
@@ -17,6 +19,12 @@
         <a class="dropdown-item" href="#">Something else here</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Separated link</a>
+        <a class="dropdown-item" href="{{ route('logout') }}" onclick="preventDefault(); document.getElementById('logout-form').submit();">
+            @lang('menu.logout')
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </div>
 </div>
 @endguest
