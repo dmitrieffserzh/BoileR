@@ -5,7 +5,9 @@
  */
 try {
     window.$ = window.jQuery = require('jquery');
-    require('./bootstrap');
+
+    // BOOTSTRAP COMPONENTS
+    require('./_bootstrap/index.js');
 
     // AJAX X-CSRF-TOKEN
     $.ajaxSetup({

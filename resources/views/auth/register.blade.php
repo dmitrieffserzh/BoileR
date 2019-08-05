@@ -8,8 +8,23 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" style="m;">
         @csrf
+
+        <div class="form-group row">
+            <label for="name"
+                   class="col-md-4 col-form-label text-md-right col-form-label-sm">@lang('auth.register_username')</label>
+
+            <div class="col-md-6">
+                <input id="username" type="text"
+                       class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                       name="username" value="{{ old('username') }}"
+                       data-toggle="tooltip" data-placement="right" required autofocus>
+                <span class="valid-feedback" role="alert">@lang('auth.register_username_free')</span>
+                <span class="invalid-feedback" role="alert">{{ $errors->first('username') }}</span>
+            </div>
+        </div>
+
         <div class="form-group row">
             <label for="name"
                    class="col-md-4 col-form-label text-md-right col-form-label-sm">@lang('auth.register_username')</label>
@@ -64,7 +79,7 @@
 
         <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary ">
+                <button type="submit" class="button button-primary">
                     @lang('auth.register')
                 </button>
             </div>
