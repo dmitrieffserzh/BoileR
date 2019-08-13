@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
@@ -27,6 +28,16 @@ class LoginController extends Controller {
     public function __construct() {
         $this->middleware('guest')->except('logout');
     }
+
+
+    public function showLoginForm (Request $request) {
+        if($request->ajax() && $request->method('GET')) {
+            return view('auth.ajax_form')->render();
+        }
+
+
+    }
+
 
     public function logout() {
         Cache::forget( 'user-is-online-' . Auth::id() );

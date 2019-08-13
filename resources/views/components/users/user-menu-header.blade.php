@@ -1,10 +1,12 @@
 @guest
-    <a href="{{ route('login') }}" class="menu-auth__link ajax" data-url="{{ route('login') }}" data-name="Войти" data-modal-size="modal-sm">
-        @lang('menu.login')
-    </a>
-    <a href="{{ route('register') }}" class="menu-auth__link">
-        @lang('menu.register')
-    </a>
+    <div class="user-menu-header">
+        <a href="{{ route('login') }}" class="menu-auth__link ajax" data-url="{{ route('login') }}" data-type="GET" data-name="Войти">
+            @lang('menu.login')
+        </a>
+        <a href="{{ route('register') }}" class="menu-auth__link">
+            @lang('menu.register')
+        </a>
+    </div>
 @else
 <div class="user-menu-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <a class="user-menu-header__name" href="{{ route('user.profile', Auth::user()->route ?? Auth::user()->username) }}" title="{{ Auth::user()->username }}">

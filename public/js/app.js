@@ -18364,6 +18364,7 @@ $(function () {
     var modal_content = '.modal-body'; // DATA
 
     var data_url = $(this).data('url');
+    var data_type = $(this).data('type');
     var data_name = $(this).data('name');
     var data_content = $(this).data('content');
     var modal_size = $(this).data('modal-size');
@@ -18379,9 +18380,9 @@ $(function () {
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        type: 'POST',
+        type: data_type,
         success: function success(data) {
-          modal_window.find(modal_content).append(data.html);
+          modal_window.find(modal_content).append(data);
         },
         complete: function complete() {
           modal_window.modal('show');
@@ -18421,8 +18422,8 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\DEVEPOPMENT\BoileR\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\DEVEPOPMENT\BoileR\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/dmitrieffserzh/Проекты/BoileR/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/dmitrieffserzh/Проекты/BoileR/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

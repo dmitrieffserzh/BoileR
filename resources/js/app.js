@@ -41,6 +41,7 @@ $(function () {
 
         // DATA
         let data_url        = $(this).data('url');
+        let data_type       = $(this).data('type');
         let data_name       = $(this).data('name');
         let data_content    = $(this).data('content');
         let modal_size      = $(this).data('modal-size');
@@ -66,9 +67,9 @@ $(function () {
             $.ajax({
                 url: data_url,
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                type: 'POST',
+                type: data_type,
                 success: function (data) {
-                    modal_window.find(modal_content).append(data.html);
+                    modal_window.find(modal_content).append(data);
                 },
                 complete: function () {
                     modal_window.modal('show');
