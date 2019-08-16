@@ -18422,8 +18422,8 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/dmitrieffserzh/Проекты/BoileR/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/dmitrieffserzh/Проекты/BoileR/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\DEVEPOPMENT\BoileR\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\DEVEPOPMENT\BoileR\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
