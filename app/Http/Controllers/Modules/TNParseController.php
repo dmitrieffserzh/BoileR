@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TNParseController extends Controller {
 
@@ -21,8 +22,17 @@ class TNParseController extends Controller {
 
     public function upload(Request $request) {
 
-        if($request->ajax() && $request->method() == 'POST')
-            return json_decode('done');
+        if($request->ajax() && $request->method() == 'POST') {
+
+            foreach ($request->file() as $files) {
+                foreach ($files as $file) {
+                    $file->move(storage_path('images'), time().'_'.$file->getClientOriginalName());
+                }
+            }
+
+            return "Успех";
+        }
+
         return abort(404);
     }
 
