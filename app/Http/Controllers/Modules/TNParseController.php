@@ -10,10 +10,8 @@ namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class TNParseController extends Controller {
-
 
     public function index(){
         return view('modules.TNParse.index');
@@ -22,15 +20,27 @@ class TNParseController extends Controller {
 
     public function upload(Request $request) {
 
-        if($request->ajax() && $request->method() == 'POST') {
+        if($request->ajax() && $request->isMethod('post')) {
 
-            foreach ($request->file() as $files) {
-                foreach ($files as $file) {
-                    $file->move(storage_path('images'), time().'_'.$file->getClientOriginalName());
+
+            if ($request->hasFile('file')) {
+
+                $file = $request->file('file');
+                $file_puth = $file->move(public_path('uploads'), time().'_'.$file->getClientOriginalName());
+
+
+               $handle = fopen($file_puth, 'r');
+                while (($data = fgetcsv($handle, '', '|')) !== FALSE) {
+
+                    $data[2] =  iconv('MacCyrillic', 'UTF-8', $data[2]);
+
+                    print_r($data);
                 }
+
+
             }
 
-            return "Успех";
+
         }
 
         return abort(404);
