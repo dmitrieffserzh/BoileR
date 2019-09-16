@@ -33,19 +33,19 @@ class TNParseController extends Controller {
                 while (($data = fgetcsv($handle, '', '|')) !== FALSE) {
 
                     if(isset($data[1]))
-                        $data[1] =  iconv('cp866', 'UTF-8', $data[1]);
+                        $data[1] =  iconv('cp866', 'UTF-8', trim($data[1]));
                     if(isset($data[2]))
-                        $data[2] =  iconv('cp866', 'UTF-8', $data[2]);
+                        $data[2] =  iconv('cp866', 'UTF-8', trim($data[2]));
                     if(isset($data[3]))
-                        $data[3] =  iconv('cp866', 'UTF-8', $data[3]);
+                        $data[3] =  iconv('cp866', 'UTF-8', trim($data[3]));
                     if(isset($data[4]))
-                        $data[4] =  iconv('cp866', 'UTF-8', $data[4]);
+                        $data[4] =  iconv('cp866', 'UTF-8', trim($data[4]));
                     if(isset($data[5]))
-                        $data[5] =  iconv('cp866', 'UTF-8', $data[5]);
+                        $data[5] =  iconv('cp866', 'UTF-8', trim($data[5]));
 
                     print_r($data);
                 }
-
+                fclose($handle);
 
             }
 
