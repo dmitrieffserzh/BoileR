@@ -34,6 +34,9 @@
             </button>
         </form>
     </div>
+
+
+    <div class="ggggg" style="margin: 2rem 0 0;font-size: .9rem;"></div>
 @endsection
 
 
@@ -92,7 +95,7 @@
                         processData: false,
                         success: function (returndata) {
                             console.log(returndata);
-                            $('#result').html(returndata);
+                            $('.ggggg').html(returndata);
                         }
                     });
                     return false;
