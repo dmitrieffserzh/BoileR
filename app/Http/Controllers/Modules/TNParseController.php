@@ -27,7 +27,6 @@ class TNParseController extends Controller {
                 $file = $request->file('file');
                 $file_puth = $file->move(public_path('uploads'), time().'_'.$file->getClientOriginalName());
 
-
                 $handle = fopen($file_puth, 'r');
                 while (($data = fgetcsv($handle, '', '|')) !== FALSE) {
 
@@ -42,17 +41,8 @@ class TNParseController extends Controller {
                     if(isset($data[5]))
                         $data[5] = iconv('cp866', 'UTF-8', trim($data[5]));
 
-
-                    // $num = count($data);
-                    //echo "<p> " . $num . " .полей в строке " . $row ." : <br /></p>\n";
                     echo "<strong style='color: #83a6f7;'>" . $data[0]  ."</strong>   <strong>". $data[1] . "</strong>";
                     echo "<p style='color: #a3a3a5;border-bottom: 1px Dashed #e6e6e6;padding: 0 0 1rem;'>" . $data[2] . "</p>";
-
-                    //for ($c=0; $c < $num; $c++) {
-                    //    echo $data[$c] . "<br />\n";
-                    //}
-
-
 
                 }
 
@@ -60,12 +50,10 @@ class TNParseController extends Controller {
 
             }
 
-
+        } else {
+            abort(404);
         }
 
-        //return abort(404);
     }
-
-
 
 }
