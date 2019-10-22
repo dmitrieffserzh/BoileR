@@ -10899,7 +10899,7 @@ body {
   border-radius: 50%;
 }
 
-.user-card__information {
+.user-card__info {
   width: 100%;
 }
 
@@ -10913,21 +10913,10 @@ body {
   letter-spacing: 0.015rem;
 }
 
-.user-card__dot-status:before {
-  content: "";
+.user-card__dot-status {
   position: absolute;
-  right: 0.2rem;
-  bottom: 0.2rem;
-  height: 0.4rem;
-  width: 0.4rem;
-  background: #bbd0ea;
-  border-radius: 0.2rem;
-  box-shadow: 0 0 0 0.15rem #fff;
-}
-
-.user-card__dot-status--online:before {
-  content: "";
-  background: #00d006;
+  right: 0;
+  bottom: 0.1rem;
 }
 
 /* CONTENT
