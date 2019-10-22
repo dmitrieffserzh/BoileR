@@ -14,10 +14,8 @@
            title="{{ $user->username }}">
             {{ $user->username }}
         </a>
-
         <div class="user-card__status">
             {{ $user->is_online() ? 'онлайн' : UserHelper::getOnlineTime($user->profile->gender, $user->profile->offline_at->diffForHumans()) }}
         </div>
-
     </div>
 </div>
