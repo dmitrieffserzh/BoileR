@@ -293,3 +293,41 @@ body {
     }
   }
 }
+
+
+
+
+
+
+
+// USER PROFILE
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+  header {
+    background: transparent !important;
+    color: #fff;
+    box-shadow: none !important;
+  }
+  .user-profile {
+    position: relative;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 0 0 5% 5%;
+    margin: -0.5rem -15px 2rem;
+    overflow: hidden;
+    &__wrap {
+      position: relative;
+      z-index: 10;
+    }
+    & img {
+     // width: 150px;
+      margin: 4rem 0 2rem;
+      border-radius: .5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

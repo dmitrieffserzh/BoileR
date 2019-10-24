@@ -7,10 +7,8 @@ namespace App\Helpers;
 class UserHelper {
 
     public static function get_avatar($avatar) {
-        if(is_null($avatar))
-            //return '/images/default_avatar.png';
-            return '/uploads/images/default.png';
-        return '/uploads/images/' . $avatar;
+        if(is_null($avatar)) return '/uploads/images/default.png';
+        return '/uploads/users/photo/' . $avatar;
     }
 
 
@@ -27,9 +25,9 @@ class UserHelper {
 
     // GET ONLINE ON SEX
     public static function getOnlineTime( $gender_int, $time ) {
-        if ( $gender_int == 2 ) {
+        if ( $gender_int == 1 ) {
             return 'заходил ' . $time;
-        } elseif ( $gender_int == 1 ) {
+        } elseif ( $gender_int == 2 ) {
             return 'заходила ' . $time;
         }
         return $time;

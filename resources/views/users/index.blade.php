@@ -17,5 +17,6 @@
     @empty
         <p>@lang('erors.no-data')</p>
     @endforelse
-
+    <br>
+    {{ $users->links() }}
 @endsection

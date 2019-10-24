@@ -20,7 +20,6 @@
                        class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
                        name="username" value="{{ old('username') }}"
                        data-toggle="tooltip" data-placement="right" required autofocus>
-                <span class="valid-feedback" role="alert">@lang('auth.register_username_free')</span>
                 <span class="invalid-feedback" role="alert">{{ $errors->first('username') }}</span>
             </div>
         </div>
